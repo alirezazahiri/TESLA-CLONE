@@ -25,7 +25,7 @@ const Section = ({
       <Fade top>
         <Buttons>
           <ButtonGroup>
-            <LeftButton>{leftBtnText}</LeftButton>
+            {leftBtnText && <LeftButton>{leftBtnText}</LeftButton>}
             {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
           </ButtonGroup>
           <DownArrow src="/images/down-arrow.svg" />
@@ -47,6 +47,7 @@ const Wrap = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  scroll-snap-align: start;
 `;
 
 const ItemText = styled.div`

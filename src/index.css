@@ -6,11 +6,15 @@
     color: #393c41;
     margin: 0;
     padding: 0;
-    scroll-behavior: smooth;
 }
 
 a {
     text-decoration: none;
+}
+
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
 
 body {
