@@ -9,65 +9,61 @@ const Navbar = () => {
         <img src="/images/logo.svg" alt="logo" />
       </a>
       <Menu>
-        <a href="#">Model S</a>
-        <a href="#">Model 3</a>
-        <a href="#">Model X</a>
-        <a href="#">Modal Y</a>
+        {["Model S", "Model 3", "Model X", "Model Y"].map((car, index) => (
+          <a key={car} href={`#${index}`}>
+            {car}
+          </a>
+        ))}
       </Menu>
       <RightMenu>
         <a href="#">Shop</a>
         <a href="#">Tesla Account</a>
         <button onClick={() => setBurgerOpen(true)}>Menu</button>
       </RightMenu>
-      {burgerOpen && (
-        <BurgerNav open={burgerOpen}>
-          <CloseWrapper>
-            <svg
-              onClick={() => setBurgerOpen(false)}
-              viewBox="0 0 30 30"
-              xmlns="http://www.w3.org/2000/svg"
+      <BurgerNav open={burgerOpen}>
+        <CloseWrapper>
+          <svg
+            onClick={() => setBurgerOpen(false)}
+            viewBox="0 0 30 30"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              stroke="var(--tds-icon--fill, #171a20)"
+              strokeWidth="1.5"
+              strokeLinecap="round"
             >
-              <g
-                stroke="var(--tds-icon--fill, #171a20)"
-                stroke-width="1.5"
-                stroke-linecap="round"
-              >
-                <line x1="10" y1="10" x2="20" y2="20"></line>
-                <line x1="20" y1="10" x2="10" y2="20"></line>
-              </g>
-            </svg>
-          </CloseWrapper>
-          <li>
-            <a href="#">Existing Inventory</a>
+              <line x1="10" y1="10" x2="20" y2="20"></line>
+              <line x1="20" y1="10" x2="10" y2="20"></line>
+            </g>
+          </svg>
+        </CloseWrapper>
+        {["Model S", "Model 3", "Model X", "Model Y"].map((car, index) => (
+          <li key={car}>
+            <a href={`#${index}`}>{car}</a>
           </li>
-          <li>
-            <a href="#">Used Inventory</a>
-          </li>
-          <li>
-            <a href="#">Trade-in</a>
-          </li>
-          <li>
-            <a href="#">Cybertruck</a>
-          </li>
-          <li>
-            <a href="#">Roadster</a>
-          </li>
-          <li>
-            <a href="#">Existing Inventory</a>
-          </li>
-          <li>
-            <a href="#">Existing Inventory</a>
-          </li>
-          <li>
-            <a href="#">Existing Inventory</a>
-          </li>
-        </BurgerNav>
-      )}
+        ))}
+        <li>
+          <a href="#">Existing Inventory</a>
+        </li>
+        <li>
+          <a href="#">Used Inventory</a>
+        </li>
+        <li>
+          <a href="#">Trade-in</a>
+        </li>
+        <li>
+          <a href="#">Cybertruck</a>
+        </li>
+        <li>
+          <a href="#">Roadster</a>
+        </li>
+      </BurgerNav>
     </Container>
   );
 };
 
 const Container = styled.div`
+  background: rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
   left: 0;
@@ -77,6 +73,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  z-index: 10;
 `;
 
 const Menu = styled.div`
@@ -108,7 +105,6 @@ const RightMenu = styled.div`
     border: none;
   }
   button {
-    display: none;
     &:hover {
       cursor: pointer;
     }
@@ -138,6 +134,8 @@ const BurgerNav = styled.div`
   display: flex;
   flex-direction: column;
   text-align: start;
+  transform: ${(props) => (props.open ? "translateX(0)" : "translateX(100%)")};
+  transition: transform 0.2s ease-in-out;
   li {
     padding: 15px 0;
     border-bottom: 1 solid rgba(0, 0, 0, 0.8);

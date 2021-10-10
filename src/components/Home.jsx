@@ -19,11 +19,34 @@ const Home = () => {
       {state.cars.map((car) => (
         <Section
           key={car.id}
+          id={car.id}
           {...car}
           rightBtnText="Custom Order"
           leftBtnText="Existing Inventory"
         />
       ))}
+      <Section
+        image="solar-panel.jpg"
+        id="4"
+        title="Lowest Cost Solar Panels in America"
+        description="Money-back guarantee"
+        leftBtnText="Order Now"
+        rightBtnText="Learn More"
+      />
+      <Section
+        image="solar-roof.jpg"
+        id="5"
+        title="Solar for New Roofs"
+        description="Solar Roof Costs Less Than a New Roof Plus Solar Panels"
+        leftBtnText="Order Now"
+        rightBtnText="Learn More"
+      />
+      <Section
+        image="accessories.jpg"
+        id="6"
+        title="Accessories"
+        leftBtnText="Shop Now"
+      />
     </Container>
   ) : (
     "Loading..."
